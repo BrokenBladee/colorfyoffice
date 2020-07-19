@@ -3,7 +3,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-.days{
-  @apply  bg-gray-400 rounded  min-w-1 m-8 p-2 shadow-xl self-start;
-}
