@@ -1,0 +1,6 @@
+# colorfyoffice
+The frontend development is located in the folder “client”, which contains the folder “node_modules” which are the generated components from Tailwind and CSS, “public” with the index.html file that only contains the connection to the “src” folder. 
+The “src” folder is the main part of the website the files “setupTests.js”, “serviceWorker.js”, “index.js” and “App.test.js” are automated generated components of React and did not got change by me. 
+“App.js” is the main part of my website that contains every component which are located in the folder “components” each component and the “App.js” is programmed by myself with JSX that allows me to implement JavaScript content in HTML such as variables. 
+Further details and explanation on my programming can be read inside my code as comments that explains which part is what. “App.css” and the folder “tailwindcss” contain the stylesheet of the framework Tailwind. Aside from this the “package.json” file contains among other things the script on how to start the server to view the website.
+To run the server and to view the website go to the Terminal type "cd client" to access the "client" folder and type "npm start" to start th server.
