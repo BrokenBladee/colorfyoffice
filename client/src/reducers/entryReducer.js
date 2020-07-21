@@ -1,42 +1,39 @@
-import { v4 as idv4 } from 'uuid';
-import { GET_ENTRIES, ADD_ENTRY, DELETE_ENTRY } from '../actions/types';
+// import {
+//   GET_ENTRIES,
+//   ADD_ENTRY,
+//   DELETE_ENTRY,
+//   ENTRIES_LOADING,
+// } from '../actions/types';
 
-const initialState = {
-  entries: [
-    {
-      idEntry: idv4(),
-      firstName: 'John',
-      lastName: 'doe',
-      reason: 'idk',
-    },
-    {
-      idEntry: idv4(),
-      firstName: 'John',
-      lastName: 'Doe',
-      reason: 'idk',
-    },
-  ],
-};
+// const initialState = {
+//   entries: [],
+//   loading: false,
+// };
 
-export default function (state = initialState, action) {
-  switch (action.type) {
-    case GET_ENTRIES:
-      return {
-        ...state,
-      };
-    case DELETE_ENTRY:
-      return {
-        ...state,
-        entries: state.entries.filter(
-          entry => entry.idEntry !== action.payload
-        ),
-      };
-    case ADD_ENTRY:
-      return {
-        ...state,
-        entries: [...state.entries, action.payload],
-      };
-    default:
-      return state;
-  }
-}
+// export default function (state = initialState, action) {
+//   switch (action.type) {
+//     case GET_ENTRIES:
+//       return {
+//         ...state,
+//         entries: action.payload,
+//         loading: false,
+//       };
+//     case DELETE_ENTRY:
+//       return {
+//         ...state,
+//         entries: state.entries.filter(entry => entry._id !== action.payload),
+//       };
+//     case ADD_ENTRY:
+//       return {
+//         ...state,
+//         entries: [...state.entries, action.payload],
+//       };
+//     case ENTRIES_LOADING:
+//       return {
+//         ...state,
+//         loading: true,
+//       };
+//     default:
+//       return state;
+//   }
+// }

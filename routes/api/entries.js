@@ -10,7 +10,7 @@ const Entry = require('../../models/Entry');
 router.get('/', (req, res) => {
   Entry.find()
     .sort({ date: 1 })
-    .then(items => res.json(items));
+    .then(entries => res.json(entries));
 });
 
 //@route POST api/entries
@@ -18,10 +18,12 @@ router.get('/', (req, res) => {
 //@access Public
 router.post('/', (req, res) => {
   const newEntry = new Entry({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    reason: req.body.reason,
   });
 
-  newEntry.save().then(item => res.json(item));
+  newEntry.save().then(entry => res.json(entry));
 });
 
 //@route DELETE api/entries/:id

@@ -3,7 +3,15 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const EntrySchema = new Schema({
-  name: {
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  reason:{
     type: String,
     required: true,
   },

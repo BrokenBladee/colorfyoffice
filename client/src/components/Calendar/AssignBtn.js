@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { v4 as idv4 } from 'uuid';
 import { connect } from 'react-redux';
 import { getEntries, deleteEntry, addEntry } from '../../actions/entryActions';
 import PropTypes from 'prop-types';
+import {
+  GET_ENTRIES,
+  ADD_ENTRY,
+  DELETE_ENTRY,
+  ENTRIES_LOADING,
+} from '../../actions/types';
+
+const initialState = {
+  entries: [],
+  loading: false,
+};
+
+export  function reducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_ENTRIES:
+      return {
+        ...state,
+        entries: action.payload,
+        loading: false,
+      };
+    case DELETE_ENTRY:
+      return {
+        ...state,
+        entries: state.entries.filter(entry => entry._id !== action.payload),
+      };
+    case ADD_ENTRY:
+      return {
+        ...state,
+        entries: [...state.entries, action.payload],
+      };
+    case ENTRIES_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    default:
+      return state;
+  }
+}
 
 export class AssignBtn extends Component {
   componentDidMount() {
     this.props.getEntries();
   }
-
+ 
   state = {
     firstName: '',
     lastName: '',
@@ -36,21 +74,6 @@ export class AssignBtn extends Component {
         reasonName: 'Prefered',
       },
     ],
-    agnBID: '',
-    // entries: [
-    //   {
-    //     idEntry: idv4(),
-    //     firstName: 'John',
-    //     lastName: 'doe',
-    //     reason: 'idk',
-    //   },
-    //   {
-    //     idEntry: idv4(),
-    //     firstName: 'John',
-    //     lastName: 'Doe',
-    //     reason: 'idk',
-    //   },
-    // ],
   };
 
   onSubmit = e => {
@@ -64,13 +87,11 @@ export class AssignBtn extends Component {
 
   assignN = (firstName, lastName, reason2) => {
     const newEntry = {
-      idEntry: idv4(),
       firstName,
       lastName,
       reason: reason2,
     };
     this.props.addEntry(newEntry);
-    // this.setState({ entries: [...this.props.entry.entries, newEntry] });
   };
 
   delEnt = id => {
@@ -82,11 +103,11 @@ export class AssignBtn extends Component {
     return (
       <div>
         <ul className='flex-shrink'>
-          {entries.map(({ idEntry, firstName, lastName, reason }) => (
-            <li key={idEntry} className='m-3 '>
+          {entries.map(({ _id, firstName, lastName, reason }) => (
+            <li key={_id} className='m-3 '>
               {firstName} {lastName} {reason}
               <button
-                onClick={this.delEnt.bind(this, idEntry)}
+                onClick={this.delEnt.bind(this, _id)}
                 className='bg-gray-700 px-2 rounded-full curser-pointer float-right'
               >
                 x
@@ -150,4 +171,6 @@ const mapStateToProps = state => ({
   entry: state.entry,
 });
 
-export default connect(mapStateToProps, { getEntries, deleteEntry, addEntry })(AssignBtn);
+export default connect(mapStateToProps, { getEntries, deleteEntry, addEntry })(
+  AssignBtn
+);
