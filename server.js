@@ -12,8 +12,6 @@ app.use(bodyParser.json());
 
 //connect to Mongo
 // // DB Config
-const db =
-  'mongodb+srv://laurin:1234@colorfyofficeschedule.kpyb1.mongodb.net/colorfyofficeschedule?retryWrites=true&w=majority';
 
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
