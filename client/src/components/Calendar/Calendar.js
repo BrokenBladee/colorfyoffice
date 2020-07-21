@@ -12,7 +12,7 @@ export class Calendar extends Component {
       <div className="md:flex justify-center flex-wrap mx-auto h-auto">
         {/* An arrow function that creates a new array that creates one day for each entry in the array from "App.js"  */}
         {this.props.days.map((day)=>(
-          <Day key={day.id} day={day} entries={this.props.entries} delEntry={this.props.delEntry} assignN={this.props.assignN} />
+          <Day key={day.id} day={day}  />
         ))}
       </div>
     )
