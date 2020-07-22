@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import {reducer} from '../components/Calendar/AssignBtn';
+import  entryReducer  from './entryReducer';
 
 export default combineReducers({
-  entry: reducer,
+  entry: entryReducer,
 });
